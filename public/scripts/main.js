@@ -9,7 +9,9 @@
     var firebasedatastore = App.firebasedatastore;
     var FormHandler = App.FormHandler;
     var CheckList = App.CheckList;
+
     
+
     var datastore = new firebasedatastore(FIREBASE_SERVER_URL);
     var playdate = new Playdate('test', datastore);
     window.playdate = playdate;
@@ -29,5 +31,5 @@
     
     playdate.printDates(checkList.addRow.bind(checkList));
     
-    console.log(formHandler);
+    //console.log(formHandler);
 })(window);
