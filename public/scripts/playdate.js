@@ -7,7 +7,7 @@
         constructor(dateId, db) {
             this.dateId = dateId;
             this.db = db;
-            console.log('in the Playdate constructor');
+            //console.log('in the Playdate constructor');
         }
         createDate(playdate) {
             console.log('Adding date for ' + playdate.username);
@@ -23,7 +23,7 @@
                     var playdateIdArray = Object.keys(playdates);
                     // console.log('Truck #' + this.truckId + ' has pending orders: ');
                     playdateIdArray.forEach(function(id) {
-                        console.log(playdates[id]);
+                        //console.log(playdates[id]);
                         if (printFn) {
                             printFn(playdates[id]);
                         }
