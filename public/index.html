@@ -81,73 +81,95 @@
       <div class="account-details"></div>
     </div>
   </div>
+  <!-- <div id="modal-account" class="modal" id="modal-account" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
 
-    <form create-playdate="form">
-        <section>
-            <h2>Create a Playdate</h2>
-            <fieldset>
-                <legend>Animal</legend>
-                <ul>
-                    <li>
-                        <label for="dog">
-                            <input type="radio" name="group1" id="dog" value="Dog" checked>
-                            Dog
-                        </label>
-                    </li>
-                    <li>
-                        <label for="title_2">
-                            <input type="radio" name="monkey" id="monkey" value="Monkey">
-                            Monkey
-                        </label>
-                    </li>
-                </ul>
-            </fieldset>
-            <p>
-                <label for="username">
-                    <span>Username:</span>
-                    <strong><abbr title="required"></abbr></strong>
-                </label>
-                <input type="text" name="username" id="username">
-            </p>
-            <p>
-                <label for="date">
-                    <span>Date:</span>
-                    <strong><abbr title="required"></abbr></strong>
-                </label>
-                <input type="date" name="date" id="date">
-            </p>
-            <p>
-                <label for="time">
-                    <span>Time: </span>
-                    <strong><abbr title="required"></abbr></strong>
-                </label>
-                <input type="time" name="time" id="time">
-            </p>
-            <p>
-                <label for="location">
-                    <span>Location: </span>
-                    <strong><abbr title="required"></abbr></strong>
-                </label>
-                <input type="text" name="location" id="location">
-            </p>
-            <p>
-                <label for="description">
-                    <span>Description: </span>
-                    <strong><abbr title="required"></abbr></strong>
-                </label>
-                <input type="text" name="description" id="description">
-            </p>
-            <button type="create" class="btn btn-outline-primary">Create</button>
-        </section>
-        <section>
-            <h2>Available Playdates</h2>
-            <div create-playdate="checklist"></div>
-        </section>
-        <section>
-            <h2>Joined Playdates</h2>
-            <div joined-playdate="checklist"></div>
-        </section>
-    </form>
+  
+    <div class="d-flex justify-content-center"> 
+      
+      <form create-playdate="form" class="col-xs-12 col-md-6 border border-dark rounded p-5">
+          <section>
+              <h1><div class="d-flex justify-content-center border border-dark rounded bg-info text-white p-2">Playdate</div></h1>
+              <h4><div class="d-flex justify-content-center">Create a Playdate</div></h4>
+              <fieldset>
+                  <legend>Animal</legend>
+                  <ul>
+                      <li>
+                          <label for="dog">
+                              <input type="radio" name="group1" id="dog" value="Dog" checked>
+                              Dog
+                          </label>
+                      </li>
+                      <li>
+                          <label for="title_2">
+                              <input type="radio" name="monkey" id="monkey" value="Monkey">
+                              Monkey
+                          </label>
+                      </li>
+                  </ul>
+              </fieldset>
+              <p>
+                  <label for="username">
+                      <span>Username:</span>
+                      <strong><abbr title="required"></abbr></strong>
+                  </label>
+                  <input class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" id="username">
+              </p>
+              <p>
+                  <label for="date">
+                      <span>Date:</span>
+                      <strong><abbr title="required"></abbr></strong>
+                  </label>
+                  <input type="date" name="date" id="date" class="form-control">
+              </p>
+              <p>
+                  <label for="time">
+                      <span>Time: </span>
+                      <strong><abbr title="required"></abbr></strong>
+                  </label>
+                  <input type="time" name="time" id="time" class="form-control">
+              </p>
+              <p>
+                  <label for="location">
+                      <span>Location: </span>
+                      <strong><abbr title="required"></abbr></strong>
+                  </label>
+                  <input class="form-control" placeholder="Location" aria-label="Location" aria-describedby="basic-addon1" type="text" name="location" id="location">
+              </p>
+              <p>
+                  <label for="description">
+                      <span>Description: </span>
+                      <strong><abbr title="required"></abbr></strong>
+                  </label>
+                  <input class="form-control" placeholder="Location" aria-label="Location" aria-describedby="basic-addon1" type="text" name="description" id="description">
+              </p>
+              <div class="d-flex justify-content-center"><button type="create" class="btn btn-outline-info btn-light btn-lg">Create Playdate</button></div>
+          </section>
+          <section>
+              <h4><div class="d-flex justify-content-center">Available Playdates</div></h4>
+              <div create-playdate="checklist"></div>
+          </section>
+          <section>
+              <h4><div class="d-flex justify-content-center">Joined Playdates</div></h4>
+              </div><div joined-playdate="checklist"></div>
+          </section>
+      </form>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
     <script src="scripts/checklist.js" charset="utf-8"></script>
     <script src="scripts/formhandler.js" charset="utf-8"></script>
