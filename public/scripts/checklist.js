@@ -49,10 +49,11 @@
                 value: playdate.username
             });
 
-            var description = playdate.date + ', ';
-            description += playdate.time + ', ';
-            description += playdate.location + ', ';
-            description += playdate.description;
+            var description = 'Username: ' + playdate.username + '<br>';
+            description += 'Date: ' + playdate.date + '<br>';
+            description += 'Time: ' + playdate.time + '<br>';
+            description += 'Location: ' + playdate.location + '<br>';
+            description += 'Description: ' + playdate.description;
 
             $label.append($checkbox);
             $label.append(description);
