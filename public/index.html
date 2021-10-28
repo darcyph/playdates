@@ -12,26 +12,108 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Playdate</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button"    data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse align-items-center" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto align-items-center">
           <li class="nav-item">
-            <a class="nav-link" href="#">Account</a>
+            <a href="#" class="nav-link modal-trigger" data-toggle="modal" data-target="#modal-account">Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a href="#" class="nav-link modal-trigger" data-toggle="modal" data-target="#modal-login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sign Up</a>
+            <a href="#" class="nav-link modal-trigger" data-toggle="modal" data-target="#modal-signup">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">Logout</a>
+            <a href="#" class="nav-link modal-trigger">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
+
+  <!-- ACCOUNT MODAL -->
+    <div class="modal fade" id="modal-account" tabindex="-1" aria-labelledby="modal-accountLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-accountLabel">Account details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="modal-loginLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-loginLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="login-form">
+            <form>
+              <div class="form-group">
+                <label for="login-email">Email address</label>
+                <input type="email" class="form-control" id="login-email" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" class="form-control" id="login-password" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIGN UP MODAL -->
+    <div class="modal fade" id="modal-signup" tabindex="-1" aria-labelledby="modal-signupLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-signupLabel">Sign Up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="signup-form">
+            <form>
+              <div class="form-group">
+                <label for="signup-email">Email address</label>
+                <input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" class="form-control" id="signup-password" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="d-flex justify-content-center">
       <div class="col-xs-12 col-lg-6 col-md-10 border rounded p-5 shadow-lg">
         <div class="jumbotron">
