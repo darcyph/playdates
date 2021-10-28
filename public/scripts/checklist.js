@@ -49,8 +49,7 @@
                 value: playdate.username
             });
 
-            var description = 'Username: ' + playdate.username + '<br>';
-            description += 'Date: ' + playdate.date + '<br>';
+            var description = 'Date: ' + playdate.date + '<br>';
             description += 'Time: ' + playdate.time + '<br>';
             description += 'Location: ' + playdate.location + '<br>';
             description += 'Description: ' + playdate.description;

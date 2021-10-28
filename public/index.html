@@ -1,189 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playdate</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"> 
-    <!---<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-</head>
-<body>
-      <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a href="#" class="nav-link modal-trigger" data-target="modal-account">Account</a>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Playdates</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Playdate</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Account</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link modal-trigger" data-target="modal-login">Login</a>
+            <a class="nav-link" href="#">Login</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link modal-trigger" data-target="modal-signup">Sign up</a>
+            <a class="nav-link" href="#">Sign Up</a>
           </li>
-          <li class="logged-in">
-            <a href="#" class="nav-link modal-trigger" id="logout">Logout</a>
+          <li class="nav-item">
+            <a class="nav-link disabled">Logout</a>
           </li>
-        </span>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- SIGN UP MODAL -->
-  <div id="modal-signup" class="modal">
-    <div class="modal-content">
-      <h4>Sign up</h4><br />
-      <form id="signup-form">
-        <div class="input-field">
-          <input type="email" id="signup-email" required />
-          <label for="signup-email">Email address</label>
+        </ul>
+      </div>
+    </nav>
+    <div class="d-flex justify-content-center">
+      <div class="col-xs-12 col-lg-6 col-md-10 border rounded p-5 shadow-lg">
+        <div class="jumbotron">
+          <h1 class="display-4">Create a Playdate</h1>
+          <p class="lead">This is a web application where you can create playdates between your furry (or feathery) friends.</p>
         </div>
-        <div class="input-field">
-          <input type="password" id="signup-password" required />
-          <label for="signup-password">Choose password</label>
+        <div class="row my-3">
+          <div class="col-12 my-1">
+            <div class="d-flex justify-content-center">
+              <div class="dropdown">
+                <button class="btn btn-outline-info btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  Choose your animal
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#" id="dog" value="Dog">Dog</a>
+                  <a class="dropdown-item" href="#" id="cat" value="Cat">Cat</a>
+                  <a class="dropdown-item" href="#" id="rabbit" value="Rabbit">Rabbit</a>
+                  <a class="dropdown-item" href="#" id="bird" value="Bird">Bird</a>
+                  <a class="dropdown-item" href="#" id="monkey" value="Monkey">Monkey</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-1">
+            <div class="d-flex justify-content-center">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Username</span>
+                </div>
+                <input type="text" class="form-control" placeholder="kondo" name="username" id="username">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-1">
+            <div class="d-flex justify-content-center">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Date</span>
+                </div>
+                <input type="date" class="form-control" name="date" id="date">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-1">
+            <div class="d-flex justify-content-center">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Time</span>
+                </div>
+                <input type="time" class="form-control" name="time" id="time">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-1">
+            <div class="d-flex justify-content-center">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Location</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Ex. 800 N State College Blvd, Fullerton, CA 92831" name="location" id="location">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-1">
+            <div class="d-flex justify-content-center">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Description</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Near Pollak Library" name="description" id="description">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-1">
+            <div class="d-flex justify-content-center">
+              <button type="create" class="btn btn-outline-info btn-light btn-md">Create Playdate</button>
+            </div>
+          </div>
         </div>
-        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- LOGIN MODAL -->
-  <div id="modal-login" class="modal">
-    <div class="modal-content">
-      <h4>Login</h4><br />
-      <form id="login-form">
-        <div class="input-field">
-          <input type="email" id="login-email" required/>
-          <label for="login-email">Email address</label>
-        </div>
-        <div class="input-field">
-          <input type="password" id="login-password" required />
-          <label for="login-password">Your password</label>
-        </div>
-        <button class="btn yellow darken-2 z-depth-0">Login</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ACCOUNT MODAL -->
-  <div id="modal-account" class="modal">
-    <div class="modal-content center-align">
-      <h4>Account details</h4><br />
-      <div class="account-details"></div>
-    </div>
-  </div>
-  <!-- <div id="modal-account" class="modal" id="modal-account" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        <div class="d-flex justify-content-center"><h4></h4>Available Playdates</h4></div>
+        <div create-playdate="checklist"></div>
+        <div class="d-flex justify-content-center"><h4></h4>Joined Playdates</h4></div>
+        <div joined-playdate="checklist"></div>
       </div>
     </div>
-  </div> -->
+    
 
-  
-    <div class="d-flex justify-content-center"> 
-      
-      <form create-playdate="form" class="col-xs-12 col-md-6 border border-dark rounded p-5">
-          <section>
-              <h1><div class="d-flex justify-content-center border border-dark rounded bg-info text-white p-2">Playdate</div></h1>
-              <h4><div class="d-flex justify-content-center">Create a Playdate</div></h4>
-              <fieldset>
-                  <legend>Animal</legend>
-                  <ul>
-                      <li>
-                          <label for="dog">
-                              <input type="radio" name="group1" id="dog" value="Dog" checked>
-                              Dog
-                          </label>
-                      </li>
-                      <li>
-                          <label for="title_2">
-                              <input type="radio" name="monkey" id="monkey" value="Monkey">
-                              Monkey
-                          </label>
-                      </li>
-                  </ul>
-              </fieldset>
-              <p>
-                  <label for="username">
-                      <span>Username:</span>
-                      <strong><abbr title="required"></abbr></strong>
-                  </label>
-                  <input class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" id="username">
-              </p>
-              <p>
-                  <label for="date">
-                      <span>Date:</span>
-                      <strong><abbr title="required"></abbr></strong>
-                  </label>
-                  <input type="date" name="date" id="date" class="form-control">
-              </p>
-              <p>
-                  <label for="time">
-                      <span>Time: </span>
-                      <strong><abbr title="required"></abbr></strong>
-                  </label>
-                  <input type="time" name="time" id="time" class="form-control">
-              </p>
-              <p>
-                  <label for="location">
-                      <span>Location: </span>
-                      <strong><abbr title="required"></abbr></strong>
-                  </label>
-                  <input class="form-control" placeholder="Location" aria-label="Location" aria-describedby="basic-addon1" type="text" name="location" id="location">
-              </p>
-              <p>
-                  <label for="description">
-                      <span>Description: </span>
-                      <strong><abbr title="required"></abbr></strong>
-                  </label>
-                  <input class="form-control" placeholder="Descripton" aria-label="Descripton" aria-describedby="basic-addon1" type="text" name="description" id="description">
-              </p>
-              <div class="d-flex justify-content-center"><button type="create" class="btn btn-outline-info btn-light btn-lg">Create Playdate</button></div>
-          </section>
-          <section>
-              <h4><div class="d-flex justify-content-center">Available Playdates</div></h4>
-              <div create-playdate="checklist"></div>
-          </section>
-          <section>
-              <h4><div class="d-flex justify-content-center">Joined Playdates</div></h4>
-              </div><div joined-playdate="checklist"></div>
-          </section>
-      </form>
-    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
-    <script src="scripts/checklist.js" charset="utf-8"></script>
-    <script src="scripts/formhandler.js" charset="utf-8"></script>
-    <script src="scripts/firebaseconfig.js" charset="utf-8"></script>
-    <script src="scripts/firebasedatastore.js" charset="utf-8"></script>
-    <script src="scripts/playdate.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        //auth and firestore refs
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-    </script>
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/main.js" charset="utf-8"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  </body>
 </html>
