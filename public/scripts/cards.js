@@ -37,30 +37,40 @@
 
   class Entry {
       constructor(playdate) {
-          var $div = $('<div></div>', {
+        var $colHolder = $('<div class="col-6 my-1"></div>', {
+          // 'class': 'col- my-1'
+        });
+
+          var $cardHolder = $('<div></div>', {
               'create-playdate': 'cards',
               'class': 'card'
           });
 
+          var $centerHolder = $('<div></div>', {
+            'class': 'd-flex justify-content-center'
+        });
+
           var $label = $('<label></label>');
 
-          var $cards = $('<input></input>', {
+          var $deleteButton = $('<input></input>', {
               type: 'button',
               class: "btn btn-outline-info btn-light btn-md",
-              value: playdate.username
+              value: playdate.username,
           });
 
-          var description = 'Date: ' + playdate.date + '<br>';
-          description += 'Time: ' + playdate.time + '<br>';
-          description += 'Location: ' + playdate.location + '<br>';
-          description += 'Animal: ' + playdate.animal + '<br>';
-          description += 'Description: ' + playdate.description;
+          var info = 'Date: ' + playdate.date + '<br>';
+          info += 'Time: ' + playdate.time + '<br>';
+          info += 'Location: ' + playdate.location + '<br>';
+          info += 'Animal: ' + playdate.animal + '<br>';
+          info += 'Description: ' + playdate.description + '<br>';
 
-          $label.append($cards);
-          $label.append(description);
-          $div.append($label);
+          $label.append(info);
+          $label.append($deleteButton);
+          $centerHolder.append($label);
+          $colHolder.append($cardHolder);
+          $cardHolder.append($centerHolder);
 
-          this.$element = $div;
+          this.$element = $colHolder;
       }
   }
 
