@@ -36,7 +36,7 @@
     formHandler.addSubmitHandler(function(data) {
         return playdate.createDate.call(playdate, data)
             .then(function() {
-                cards.addRow.call(cards, data);
+                cards.addEntry.call(cards, data);
             },
             function() { 
                 alert('Server unreachable. Try again later.');
@@ -45,7 +45,7 @@
     
     // playdate.printDates(checkList.addRow.bind(checkList));
 
-    playdate.printDates(cards.addRow.bind(cards));
+    playdate.printDates(cards.addEntry.bind(cards));
     
     //console.log(formHandler);
 })(window);

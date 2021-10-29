@@ -18,34 +18,35 @@
               var email = event.target.value;
               fn(email)
                   .then(function() {
-                      this.removeRow(email);
+                      this.removeEntry(email);
                   }.bind(this));
           }.bind(this));
       }
-      addRow(playdate) {
-          this.removeRow(playdate.username);
-          var rowElement = new Row(playdate);
-          this.$element.append(rowElement.$element);
+      addEntry(playdate) {
+          this.removeEntry(playdate.username);
+          var entryElement = new Entry(playdate);
+          this.$element.append(entryElement.$element);
       }
-      removeRow(username) {
+      removeEntry(username) {
           this.$element
           .find('[value="' + username + '"]')
-          .closest('[create-playdate="checkbox"]')
+          .closest('[create-playdate="cards"]')
           .remove();
       }
   }
 
-  class Row {
+  class Entry {
       constructor(playdate) {
           var $div = $('<div></div>', {
-              'create-playdate': 'checkbox',
-              'class': 'checkbox'
+              'create-playdate': 'cards',
+              'class': 'card'
           });
 
           var $label = $('<label></label>');
 
-          var $checkbox = $('<input></input>', {
-              type: 'checkbox',
+          var $cards = $('<input></input>', {
+              type: 'button',
+              class: "btn btn-outline-info btn-light btn-md",
               value: playdate.username
           });
 
@@ -55,7 +56,7 @@
           description += 'Animal: ' + playdate.animal + '<br>';
           description += 'Description: ' + playdate.description;
 
-          $label.append($checkbox);
+          $label.append($cards);
           $label.append(description);
           $div.append($label);
 
