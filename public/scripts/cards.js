@@ -57,15 +57,7 @@
 
                 var $label = $('<label></label>');
 
-                var $deleteButton = $('<input></input>', {
-                    type: 'button',
-                    class: "invisible btn btn-outline-info btn-light btn-md",
-                    value: playdate.username,
-                }, );
-
-                var $addButton = $('<div><i class="fa fa-trash"></div>', {
-                    class: "btn btn-outline-info btn-light btn-md"
-                });
+                
 
                 var info = 'Date: ' + playdate.date + '<br>';
                 info += 'Time: ' + playdate.time + '<br>';
@@ -74,9 +66,8 @@
                 info += 'Description: ' + playdate.description + '<br>';
                 info += 'Joined: ' + playdate.joined + '<br>';
 
+                
                 $label.append(info);
-                $addButton.append($deleteButton);
-                $label.append($addButton);
                 $centerHolder.append($label);
                 $colHolder.append($cardHolder);
                 $cardHolder.append($centerHolder);
