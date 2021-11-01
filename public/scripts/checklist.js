@@ -52,6 +52,7 @@
             var description = 'Date: ' + playdate.date + '<br>';
             description += 'Time: ' + playdate.time + '<br>';
             description += 'Location: ' + playdate.location + '<br>';
+            description += 'Animal: ' + playdate.animal + '<br>';
             description += 'Description: ' + playdate.description;
 
             $label.append($checkbox);
