@@ -3,6 +3,7 @@
     var FORM_SELECTOR = '[create-playdate="form"]';
     // var CHECKLIST_SELECTOR = '[create-playdate="checklist"]';
     var CARD_SELECTOR = '[create-playdate="cards"]';
+    var JOINED_SELECTOR = '[joined-playdate="cards"]';
     var FIREBASE_SERVER_URL = 'http://play-dates-b38e9.firebaseapp.com';
     
     var App = window.App;
@@ -30,7 +31,8 @@
     //             alert('Server unreachable. Try again later.');
     //         });
     // });
-    var cards = new Cards(CARD_SELECTOR);
+    var cards = new Cards(CARD_SELECTOR, auth);
+    var joinedCheckList = new Cards(JOINED_SELECTOR, auth);
     cards.addClickHandler(playdate.deleteDate.bind(playdate));
     var formHandler = new FormHandler(FORM_SELECTOR);
     formHandler.addSubmitHandler(function(data) {
@@ -46,6 +48,8 @@
     // playdate.printDates(checkList.addRow.bind(checkList));
 
     playdate.printDates(cards.addEntry.bind(cards));
+    playdate.printDates(joinedCheckList.addEntry.bind(joinedCheckList));
+
     
     //console.log(formHandler);
 })(window);
