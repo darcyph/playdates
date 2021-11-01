@@ -2,9 +2,9 @@
     'use strict';
     var App = window.App || {};
     var $ = window.jQuery;
-
+    
     class CheckList {
-        constructor(selector) {
+        constructor(selector, auth) {
             if (!selector) {
                 throw new Error('No selector provided');
             }
@@ -12,6 +12,11 @@
             if (this.$element.length === 0) {
                 throw new Error('Could not find element with selector: ' + selector);
             }
+            this.selector = selector;
+            this.email = auth;
+            console.log(auth);
+            console.log(this.email.currentUser);
+            
         }
         addClickHandler(fn) {
             this.$element.on('click', 'input', function(event) {
@@ -24,7 +29,7 @@
         }
         addRow(playdate) {
             this.removeRow(playdate.username);
-            var rowElement = new Row(playdate);
+            var rowElement = new Row(playdate, this.selector, this.email);
             this.$element.append(rowElement.$element);
         }
         removeRow(username) {
@@ -36,8 +41,9 @@
     }
 
     class Row {
-        constructor(playdate) {
-            var $div = $('<div></div>', {
+        constructor(playdate, selector) {
+            if(playdate.joined == 'kgutierrez1992@live.com' && selector == '[joined-playdate="checklist"]')
+            {var $div = $('<div></div>', {
                 'create-playdate': 'checkbox',
                 'class': 'checkbox'
             });
@@ -58,8 +64,33 @@
             $label.append(description);
             $div.append($label);
 
-            this.$element = $div;
+            this.$element = $div;}
+            else if (selector == '[create-playdate="checklist"]')
+            {var $div = $('<div></div>', {
+                'create-playdate': 'checkbox',
+                'class': 'checkbox'
+            });
+
+            var $label = $('<label></label>');
+
+            var $checkbox = $('<input></input>', {
+                type: 'checkbox',
+                value: playdate.username
+            });
+
+            var description = 'Date: ' + playdate.date + '<br>';
+            description += 'Time: ' + playdate.time + '<br>';
+            description += 'Location: ' + playdate.location + '<br>';
+            description += 'Description: ' + playdate.description;
+
+            $label.append($checkbox);
+            $label.append(description);
+            $div.append($label);
+
+            this.$element = $div;}
+            
         }
+        
     }
 
     App.CheckList = CheckList;

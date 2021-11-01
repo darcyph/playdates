@@ -2,6 +2,8 @@
 auth.onAuthStateChanged(user =>{
     if (user){
         console.log('logged in as: ' + user.email);
+        console.log(auth.currentUser.email);
+        main();
     }
     else {
         console.log('user logged out');
@@ -22,8 +24,9 @@ signupForm.addEventListener('submit', (e) => {
     auth.createUserWithEmailAndPassword(emailAddr, pwd).then(cred => {
         console.log(cred);
         const modal = document.querySelector('#modal-signup');
-        M.Modal.getInstance(modal).close();
+        
         signupForm.reset();
+        history.go(0);
     });
 });
 
@@ -34,6 +37,7 @@ logout.addEventListener('click', (e) =>{
 
     auth.signOut().then(() => {
         console.log('User logged out');
+        history.go(0);
     });
 })
 
@@ -50,8 +54,9 @@ login.addEventListener('submit', (e) =>{
     auth.signInWithEmailAndPassword(emailAddr, pwd).then((cred) => {
         console.log(cred.user);
         const modal = document.querySelector('#modal-login');
-        M.Modal.getInstance(modal).close();
+        
         login.reset();
         console.log('User logged in');
+        history.go(0);
     });
 })
