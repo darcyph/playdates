@@ -4,9 +4,7 @@
     var App = window.App || {};
   
     class firebasedatastore {
-        constructor() {
-          console.log('running the firebasedatastore function');
-  
+        constructor() {  
           this.db = firebase.firestore();
         }
   
