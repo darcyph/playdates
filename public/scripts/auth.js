@@ -1,11 +1,37 @@
 //listening for auth status changes
 auth.onAuthStateChanged(user =>{
+    var FORM_SELECTOR = '[create-playdate="form"]';
+    const CARD_SELECTOR = '[create-playdate="cards"]';
+    var JOINED_SELECTOR = '[joined-playdate="cards"]';
     if (user){
         console.log('logged in as: ' + user.email);
     }
     else {
         console.log('user logged out');
     }
+
+    
+
+    var Cards = App.Cards;
+    var cards = new Cards(CARD_SELECTOR, auth.currentUser.email);
+    var joinedCheckList = new Cards(JOINED_SELECTOR, auth.currentUser.email);
+    cards.addClickHandler(playdate.deleteDate.bind(playdate));
+    var formHandler = new FormHandler(FORM_SELECTOR);
+    formHandler.addSubmitHandler(function(data) {
+        return playdate.createDate.call(playdate, data)
+            .then(function() {
+                cards.addEntry.call(cards, data);
+            },
+            function() { 
+                alert('Server unreachable. Try again later.');
+            });
+    });
+    
+    // playdate.printDates(checkList.addRow.bind(checkList));
+
+    playdate.printDates(cards.addEntry.bind(cards));
+    playdate.printDates(joinedCheckList.addEntry.bind(joinedCheckList));
+
 })
 
 const signupForm = document.querySelector('#signup-form');

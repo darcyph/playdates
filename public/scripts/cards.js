@@ -13,9 +13,7 @@
             throw new Error('Could not find element with selector: ' + selector);
         }
         this.selector = selector;
-        this.email = auth;
-        console.log(selector);
-        
+        this.email = auth;        
     }
     addClickHandler(fn) {
         this.$element.on('click', 'input', function(event) {
