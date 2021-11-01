@@ -37,7 +37,7 @@
 
   class Entry {
       constructor(playdate) {
-        var $colHolder = $('<div class="col-6 my-1"></div>', {
+        var $colHolder = $('<div class="col-12 my-1"></div>', {
           // 'class': 'col- my-1'
         });
 
@@ -54,8 +54,12 @@
 
           var $deleteButton = $('<input></input>', {
               type: 'button',
-              class: "btn btn-outline-info btn-light btn-md",
+              class: "invisible btn btn-outline-info btn-light btn-md",
               value: playdate.username,
+          }, );
+
+          var $addButton =$('<div><i class="fa fa-trash"></div>', {
+              class: "btn btn-outline-info btn-light btn-md"
           });
 
           var info = 'Date: ' + playdate.date + '<br>';
@@ -65,7 +69,8 @@
           info += 'Description: ' + playdate.description + '<br>';
 
           $label.append(info);
-          $label.append($deleteButton);
+          $addButton.append($deleteButton);
+          $label.append($addButton);
           $centerHolder.append($label);
           $colHolder.append($cardHolder);
           $cardHolder.append($centerHolder);

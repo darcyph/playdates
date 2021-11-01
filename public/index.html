@@ -10,6 +10,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Playdates</title>
   </head>
   <body>
@@ -153,14 +154,32 @@
                   </div>
                 </div> -->
 
-                <select class="bootstrap-select">
-                  <option name="animal" id="dog" value="Dog" selected="selected">Dog</option>
-                  <option name="animal" id="cat" value="Cat">Cat</option>
-                  <option name="animal" id="rabbit" value="Rabbit">Rabbit</option>
-                  <option name="animal" id="guineapig" value="Guinea Pig">Guinea Pig</option>
-                  <option name="animal" id="bird" value="Bird">Bird</option>
-                  <option name="animal" id="monkey" value="Monkey">Monkey</option>
-                </select>
+                <!-- <select class="bootstrap-select">
+                  <option name="animal" id="animal" value="Dog" selected="selected">Dog</option>
+                  <option name="animal" id="animal" value="Cat">Cat</option>
+                  <option name="animal" id="animal" value="Rabbit">Rabbit</option>
+                  <option name="animal" id="animal" value="Guinea Pig">Guinea Pig</option>
+                  <option name="animal" id="animal" value="Bird">Bird</option>
+                  <option name="animal" id="animal" value="Monkey">Monkey</option>
+                </select> -->
+
+                <fieldset>
+                  <legend>Animal</legend>
+                  <ul>
+                      <li>
+                          <label for="animal">
+                              <input type="radio" name="animal" id="animal" value="Dog" checked>
+                              Dog
+                          </label>
+                      </li>
+                      <li>
+                          <label for="title_2">
+                              <input type="radio" name="animal" id="animal" value="Monkey">
+                              Monkey
+                          </label>
+                      </li>
+                  </ul>
+              </fieldset>
                 
               </div>
             </div>
