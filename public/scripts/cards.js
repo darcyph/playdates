@@ -17,23 +17,30 @@
         }
         addClickHandler(fn) {
             this.$element.on('click', 'input', function (event) {
-                var email = event.target.value;
-                fn(email)
+                var username = event.target.value;
+                fn(username)
                     .then(function () {
-                        this.removeRow(email);
+                        this.appendRow(username);
                     }.bind(this));
             }.bind(this));
         }
         addEntry(playdate) {
-            this.removeRow(playdate.username);
+            // this.removeRow(playdate.username);
             var entryElement = new Entry(playdate, this.selector, this.email);
             this.$element.append(entryElement.$element);
         }
-        removeRow(username) {
+        // removeRow(username) {
+        //     this.$element
+        //         .find('[value="' + username + '"]')
+        //         .closest('[create-playdate="cards"]')
+        //         .remove();
+        // }
+        appendRow(username) {
+            console.log("linz: " + this.email)
             this.$element
                 .find('[value="' + username + '"]')
                 .closest('[create-playdate="cards"]')
-                .remove();
+                location.reload();
         }
     }
 

@@ -23,7 +23,7 @@ auth.onAuthStateChanged(user => {
         var Cards = App.Cards;
         var cards = new Cards(CARD_SELECTOR, auth.currentUser.email);
         var joinedCheckList = new Cards(JOINED_SELECTOR, auth.currentUser.email);
-        cards.addClickHandler(playdate.deleteDate.bind(playdate));
+        cards.addClickHandler(playdate.updateDate.bind(playdate));
         var formHandler = new FormHandler(FORM_SELECTOR);
         formHandler.addSubmitHandler(function (data) {
             return playdate.createDate.call(playdate, data)

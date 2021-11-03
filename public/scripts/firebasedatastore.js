@@ -10,9 +10,11 @@ const PERMASTORE = 'playdates';
           this.db = firebase.firestore();
         }
   
-        async add(key, val) {
+        async add(val) {
             console.log('firebase add  ');
-            const docRef = this.db.doc(`${PERMASTORE}/${this.makeDocHash(20)}`);
+            var docHash = this.makeDocHash(10);
+            const docRef = this.db.doc(`playdates/${docHash}`);
+            val.username = docHash;
             return docRef.set(val); 
         }
         async get(username, cb)  { 
@@ -33,6 +35,16 @@ const PERMASTORE = 'playdates';
                 batch.delete(doc.ref);
             });
             await batch.commit();
+        }
+        async update(id, email)   {
+            console.log(id + " " + email)
+            const docRef = this.db.collection(`playdates`);
+            const snapshot = await docRef.where('username', '==', id).get();
+            const batch = this.db.batch()
+            snapshot.forEach(doc => {
+                batch.update(doc.ref, {joined: email})
+            })
+            return await batch.commit();
         }
         makeDocHash(len) {
             var result           = '';

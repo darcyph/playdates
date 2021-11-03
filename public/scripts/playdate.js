@@ -13,9 +13,13 @@
             console.log('Adding date for ' + playdate.username);
             return this.db.add(playdate.username, playdate);
         }
-        deleteDate(userId) { 
-            console.log('Deleting date for ' + userId);
-            return this.db.remove(userId);
+        // deleteDate(userId) { 
+        //     console.log('Deleting date for ' + userId);
+        //     return this.db.remove(userId);
+        // }
+        updateDate(userId) { 
+            console.log('Updating date for ' + auth.currentUser.email);
+            return this.db.update(userId, auth.currentUser.email);
         }
         printDates(printFn) {
             return this.db.getAll()
