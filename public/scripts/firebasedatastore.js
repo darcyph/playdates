@@ -10,10 +10,10 @@ const PERMASTORE = 'playdates';
           this.db = firebase.firestore();
         }
   
-        async add(val) {
+        async add(key, val) {
             console.log('firebase add  ');
             var docHash = this.makeDocHash(10);
-            const docRef = this.db.doc(`playdates/${docHash}`);
+            const docRef = this.db.doc(`${PERMASTORE}/${docHash}`);
             val.username = docHash;
             return docRef.set(val); 
         }
