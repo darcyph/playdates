@@ -46,7 +46,7 @@
 
     class Entry {
         constructor(playdate, selector, email) {
-            var $colHolder = $('<div class="col-12 my-1"></div>', {
+            var $colHolder = $('<div class="col-6 my-1"></div>', {
                 // 'class': 'col- my-1'
             });
 
@@ -59,8 +59,12 @@
                 });
 
                 var $centerHolder = $('<div></div>', {
-                    'class': 'd-flex justify-content-center'
+                    'class': ''
                 });
+
+                // var $centerHolder = $('<div></div>', {
+                //     'class': 'd-flex justify-content-center'
+                // });
 
                 var $label = $('<label></label>');
 
@@ -87,18 +91,22 @@
                 });
 
                 var $centerHolder = $('<div></div>', {
-                    'class': 'd-flex justify-content-center'
+                    'class': ''
                 });
+
+                // var $centerHolder = $('<div></div>', {
+                //     'class': 'd-flex justify-content-center'
+                // });
 
                 var $label = $('<label></label>');
 
-                var $deleteButton = $('<input></input>', {
+                var $addButton = $('<input></input>', {
                     type: 'button',
                     class: "invisible btn btn-outline-info btn-light btn-md",
                     value: playdate.username,
                 }, );
 
-                var $addButton = $('<div><i class="fa fa-trash"></div>', {
+                var $deleteSupportButton = $('<div><i class="fa fa-plus-square"></div>', {
                     class: "btn btn-outline-info btn-light btn-md"
                 });
 
@@ -109,8 +117,8 @@
                 info += 'Description: ' + playdate.description + '<br>';
 
                 $label.append(info);
-                $addButton.append($deleteButton);
-                $label.append($addButton);
+                $deleteSupportButton.append($addButton);
+                $label.append($deleteSupportButton);
                 $centerHolder.append($label);
                 $colHolder.append($cardHolder);
                 $cardHolder.append($centerHolder);
