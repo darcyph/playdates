@@ -27,7 +27,9 @@ const PERMASTORE = 'playdates';
             const snapshot = await docRef.get();
             return await snapshot.docs.map(e => e.data());
         }
-        async remove(username)   { 
+        async remove(username)   {
+            // remove does not work here I think
+            console.log('firebase remove  ');
             const docRef = await this.db.collection(`${PERMASTORE}`);
             const batch = this.db.batch();
             const snapshot = await docRef.where('username', '==', username).get();

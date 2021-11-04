@@ -15,13 +15,31 @@
             this.selector = selector;
             this.email = auth;
         }
+        //kevin changed addClickHandler a little bit up here for button functionality
         addClickHandler(fn) {
             this.$element.on('click', 'input', function (event) {
-                var username = event.target.value;
-                fn(username)
-                    .then(function () {
-                        this.appendRow(username);
-                    }.bind(this));
+                var input_total = event.target.value;
+                console.log(input_total);
+                var indentifier = input_total.substring(0, 1);
+                console.log(indentifier);
+                var username = input_total.substring(1);
+                console.log(username);
+
+                if (indentifier === "0") {
+                    console.log("add")
+                    fn(username)
+                        .then(function () {
+                            this.appendRow(username);
+                        }.bind(this));
+                }
+                else if (indentifier === "1") {
+                    alert("delete")
+                    // removeRow does not work here
+                    // fn(username)
+                    //     .then(function () {
+                    //         this.removeRow(username);
+                    //     }.bind(this));
+                }
             }.bind(this));
         }
         addEntry(playdate) {
@@ -29,12 +47,14 @@
             var entryElement = new Entry(playdate, this.selector, this.email);
             this.$element.append(entryElement.$element);
         }
-        // removeRow(username) {
-        //     this.$element
-        //         .find('[value="' + username + '"]')
-        //         .closest('[create-playdate="cards"]')
-        //         .remove();
-        // }
+        removeRow(username) {
+            // removeRow does not work here
+            this.$element
+                .find('[value="' + username + '"]')
+                .find('[value="' + username + '"]')
+                .closest('[create-playdate="cards"]')
+                .remove();
+        }
         appendRow(username) {
             console.log("linz: " + this.email)
             this.$element
@@ -103,10 +123,20 @@
                 var $addButton = $('<input></input>', {
                     type: 'button',
                     class: "invisible btn btn-outline-info btn-light btn-md",
-                    value: playdate.username,
+                    value: "0" + playdate.username,
                 }, );
 
-                var $deleteSupportButton = $('<div><i class="fa fa-plus-square"></div>', {
+                var $addSupportButton = $('<div><i class="fa fa-plus-square"></div>', {
+                    class: "btn btn-outline-info btn-light btn-md"
+                });
+
+                var $deleteButton = $('<input></input>', {
+                    type: 'button',
+                    class: "invisible btn btn-outline-info btn-light btn-md",
+                    value: "1" + playdate.username,
+                }, );
+
+                var $deleteSupportButton = $('<div><i class="fa fa-trash"></div>', {
                     class: "btn btn-outline-info btn-light btn-md"
                 });
 
@@ -117,7 +147,9 @@
                 info += 'Description: ' + playdate.description + '<br>';
 
                 $label.append(info);
-                $deleteSupportButton.append($addButton);
+                $addSupportButton.append($addButton);
+                $deleteSupportButton.append($deleteButton);
+                $label.append($addSupportButton);
                 $label.append($deleteSupportButton);
                 $centerHolder.append($label);
                 $colHolder.append($cardHolder);
