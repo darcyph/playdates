@@ -12,12 +12,14 @@ const PERMASTORE = 'playdates';
   
         async add(key, val) {
             console.log('firebase add  ');
-            const docRef = this.db.doc(`${PERMASTORE}/${this.makeDocHash(20)}`);
+            var docHash = this.makeDocHash(10);
+            const docRef = this.db.doc(`${PERMASTORE}/${docHash}`);
+            val.id = docHash;
             return docRef.set(val); 
         }
-        async get(username, cb)  { 
+        async get(id, cb)  { 
             const docRef = this.db.collection(`${PERMASTORE}`);
-            const snapshot = await docRef.where('username', '==', username).get();
+            const snapshot = await docRef.where('id', '==', id).get();
             return await snapshot.docs.map(e => e.data());
         }
         async getAll(cb)    { 
@@ -25,14 +27,26 @@ const PERMASTORE = 'playdates';
             const snapshot = await docRef.get();
             return await snapshot.docs.map(e => e.data());
         }
-        async remove(username)   { 
+        async remove(id)   {
+            // remove does not work here I think
+            console.log('firebase remove  ');
             const docRef = await this.db.collection(`${PERMASTORE}`);
             const batch = this.db.batch();
-            const snapshot = await docRef.where('username', '==', username).get();
+            const snapshot = await docRef.where('id', '==', id).get();
             snapshot.forEach(doc => {
                 batch.delete(doc.ref);
             });
             await batch.commit();
+        }
+        async update(id, email)   {
+            console.log(id + " " + email)
+            const docRef = this.db.collection(`playdates`);
+            const snapshot = await docRef.where('id', '==', id).get();
+            const batch = this.db.batch()
+            snapshot.forEach(doc => {
+                batch.update(doc.ref, {joined: email})
+            })
+            return await batch.commit();
         }
         makeDocHash(len) {
             var result           = '';
