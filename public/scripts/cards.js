@@ -54,7 +54,6 @@
                 .remove();
         }
         appendRow(id) {
-            console.log("linz: " + this.email)
             this.$element
                 .find('[value="' + id + '"]')
                 .closest('[create-playdate="cards"]')
