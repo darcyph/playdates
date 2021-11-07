@@ -29,8 +29,8 @@
                     }
                     */
                 })
+                data['joined'] = '';
                 
-                ;
                 console.log(data);
                 fn(data)
                     .then(function() {
