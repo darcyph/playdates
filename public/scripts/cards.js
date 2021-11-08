@@ -69,59 +69,39 @@
 
             // in the joined dates, check if logged in user is in the joined group, or the only other person who joined. 
             if (selector == '[joined-playdate="cards"]' && ($.inArray(email, playdate.joined) > -1 || playdate.joined == email)) {
-                
-                var $cardHolder = $('<div></div>', {
-                    'joined-playdate': 'cards',
-                    'class': 'card'
-                });
-
-                var $centerHolder = $('<div></div>', {
-                    'class': ''
-                });
-
-                // var $centerHolder = $('<div></div>', {
-                //     'class': 'd-flex justify-content-center'
-                // });
-
-                var $label = $('<label></label>');
-
-                
-
-                var info = 'Date: ' + playdate.date + '<br>';
-                info += 'Time: ' + playdate.time + '<br>';
-                info += 'Location: ' + playdate.location + '<br>';
-                info += 'Animal: ' + playdate.animal + '<br>';
-                info += 'Description: ' + playdate.description + '<br>';
-                info += 'Joined: ' + playdate.joined + '<br>';
-
-                
-                $label.append(info);
-                $centerHolder.append($label);
-                $colHolder.append($cardHolder);
-                $cardHolder.append($centerHolder);
-
-                this.$element = $colHolder;
-            } else if (selector == '[create-playdate="cards"]' && playdate.joined == '') {
                 var $cardHolder = $('<div></div>', {
                     'create-playdate': 'cards',
-                    'class': 'card bg-light text-center'
+                    'class': 'card text-center'
                 });
 
-                
-
-                // var $centerHolder = $('<div></div>', {
-                //     'class': ''
-                // });
-
-                // var $centerHolder = $('<div></div>', {
-                //     'class': 'd-flex justify-content-center'
-                // });
-
-                // var $label = $('<label></label>');
+                var playdateImage = "";
+                switch (playdate.animal) {
+                    case "Dog":
+                        playdateImage = "images/dog.png";
+                        break;
+                    case "Cat":
+                        playdateImage = "images/cat.png";
+                        break;
+                    case "Rabbit":
+                        playdateImage = "images/rabbit.png";
+                        break;
+                    case "Guinea Pig":
+                        playdateImage = "images/guinea-pig.png";
+                        break;
+                    case "Bird":
+                        playdateImage = "images/bird.png";
+                        break;
+                    case "Monkey":
+                        playdateImage = "images/monkey.png";
+                        break;
+                    default:
+                        playdateImage = "images/dog.png";
+                }
 
                 var $cardPicture = $('<img>', {
-                    src: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg",
-                    'class': 'card-img-top rounded-circle'
+                    src: playdateImage,
+                    style: "max-width:50%;",
+                    'class': 'card-img-top rounded-circle shadow-lg'
                 });
                 var $ch = $('<h5 class="card-header"></h5>');
 
@@ -133,7 +113,6 @@
                     'class': 'list-group list-group-flush'
                 });
 
-                // var $pDate = $('<li class="list-group-item list-group-item-secondary"></li>');
                 var $pDate = $('<li class="list-group-item"></li>');
                 var $pTime = $('<li class="list-group-item"></li>');
                 var $pLocation = $('<li class="list-group-item"></li>');
@@ -154,18 +133,101 @@
 
                 $pDescription.append('<h5 class="mb-1">Description</h5>');
                 $pDescription.append(playdate.description);
-
-
                 
                 $cl.append($pDate);
                 $cl.append($pTime);
                 $cl.append($pLocation);
                 $cl.append($pAnimal);
                 $cl.append($pDescription);
+                
+                var $cb2 = $('<div></div>', {
+                    'class': 'card-body bg-success'
+                });
+
+                var $joinedText = $('<h5 class="mb-1">Joined</h5>');
+
+                $cb2.append($joinedText);
+
+                $cb1.append($cardPicture);
+                $cardHolder.append($ch);
+                $cardHolder.append($cb1);
+                $cardHolder.append($cl);
+                $cardHolder.append($cb2);
+                
+                $colHolder.append($cardHolder);
+
+                this.$element = $colHolder;
+            } else if (selector == '[create-playdate="cards"]' && playdate.joined == '') {
+                var $cardHolder = $('<div></div>', {
+                    'create-playdate': 'cards',
+                    'class': 'card bg-light text-center'
+                });
+
+                var playdateImage = "";
+                switch (playdate.animal) {
+                    case "Dog":
+                        playdateImage = "images/dog.png";
+                        break;
+                    case "Cat":
+                        playdateImage = "images/cat.png";
+                        break;
+                    case "Rabbit":
+                        playdateImage = "images/rabbit.png";
+                        break;
+                    case "Guinea Pig":
+                        playdateImage = "images/guinea-pig.png";
+                        break;
+                    case "Bird":
+                        playdateImage = "images/bird.png";
+                        break;
+                    case "Monkey":
+                        playdateImage = "images/monkey.png";
+                        break;
+                    default:
+                        playdateImage = "images/dog.png";
+                }
+
+                var $cardPicture = $('<img>', {
+                    src: playdateImage,
+                    style: "max-width:50%;",
+                    'class': 'card-img-top rounded-circle shadow-lg'
+                });
+                var $ch = $('<h5 class="card-header"></h5>');
+
+                $ch.append(playdate.title);
 
 
+                var $cb1 = $('<div class="card-body"></div>');
+                var $cl = $('<ul></ul>', {
+                    'class': 'list-group list-group-flush'
+                });
 
+                var $pDate = $('<li class="list-group-item"></li>');
+                var $pTime = $('<li class="list-group-item"></li>');
+                var $pLocation = $('<li class="list-group-item"></li>');
+                var $pAnimal = $('<li class="list-group-item"></li>');
+                var $pDescription = $('<li class="list-group-item"></li>');
+                
+                $pDate.append('<h5 class="mb-1">Date</h5>');
+                $pDate.append(playdate.date);
+                
+                $pTime.append('<h5 class="mb-1">Time</h5>');
+                $pTime.append(playdate.time);
 
+                $pLocation.append('<h5 class="mb-1">Location</h5>');
+                $pLocation.append(playdate.location);
+
+                $pAnimal.append('<h5 class="mb-1">Animal</h5>');
+                $pAnimal.append(playdate.animal);
+
+                $pDescription.append('<h5 class="mb-1">Description</h5>');
+                $pDescription.append(playdate.description);
+                
+                $cl.append($pDate);
+                $cl.append($pTime);
+                $cl.append($pLocation);
+                $cl.append($pAnimal);
+                $cl.append($pDescription);
                 
                 var $cb2 = $('<div class="card-body"></div>');
 
@@ -175,13 +237,7 @@
                     id: "flexCheckDefault"
                 });
 
-                // var $addSupportButton = $('<label>Join Playdate</label>', {
-                //     class: "form-check-label",
-                //     for: "flexCheckDefault"
-                // });
-
-
-                $cb2.append("Join Playdate: ");
+                $cb2.append('<h5 class="mb-1">Join Playdate: </h5> ');
                 $cb2.append($addButton);
 
                 $cb1.append($cardPicture);
@@ -189,59 +245,10 @@
                 $cardHolder.append($cb1);
                 $cardHolder.append($cl);
                 $cardHolder.append($cb2);
-                // $cardHolder.append($addSupportButton);
                 
                 $colHolder.append($cardHolder);
-                
-                
-
-
-                // $colHolder.append($cardHolder);
-
-                
 
                 this.$element = $colHolder;
-
-                
-
-                // var $addButton = $('<input></input>', {
-                //     type: 'button',
-                //     class: "invisible btn btn-outline-info btn-light btn-md",
-                //     value: "0" + playdate.username,
-                // }, );
-
-                // var $addSupportButton = $('<div><i class="fa fa-plus-square"></div>', {
-                //     class: "btn btn-outline-info btn-light btn-md"
-                // });
-
-                // var $deleteButton = $('<input></input>', {
-                //     type: 'button',
-                //     class: "invisible btn btn-outline-info btn-light btn-md",
-                //     value: "1" + playdate.username,
-                // }, );
-
-                // var $deleteSupportButton = $('<div><i class="fa fa-trash"></div>', {
-                //     class: "btn btn-outline-info btn-light btn-md"
-                // });
-
-                // var info = 'Date: ' + playdate.date + '<br>';
-                // info += 'Time: ' + playdate.time + '<br>';
-                // info += 'Location: ' + playdate.location + '<br>';
-                // info += 'Animal: ' + playdate.animal + '<br>';
-                // info += 'Description: ' + playdate.description + '<br>';
-
-                // $label.append(info);
-                // $addSupportButton.append($addButton);
-                // $deleteSupportButton.append($deleteButton);
-                // $label.append($addSupportButton);
-                // $label.append($deleteSupportButton);
-                // $centerHolder.append($label);
-                // $colHolder.append($cardHolder);
-                // $cardHolder.append($centerHolder);
-                // $cardHolder.append($cb1);
-                // $cardHolder.append($cl);
-
-                // this.$element = $colHolder;
             }
         }
     }
