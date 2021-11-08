@@ -15,6 +15,8 @@ signupForm.addEventListener('submit', (e) => {
 
         signupForm.reset();
         history.go(0);
+    }).catch(error => {
+        document.getElementById('error-message').textContent = error.message
     });
 });
 
@@ -46,5 +48,7 @@ login.addEventListener('submit', (e) => {
         login.reset();
         console.log('User logged in');
         history.go(0);
+    }).catch(error => {
+        document.getElementById('error-message').textContent = error.message
     });
 })
