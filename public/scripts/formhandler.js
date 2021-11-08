@@ -14,7 +14,6 @@
         }
         
         addSubmitHandler(fn) { 
-            //console.log('Setting submit handler for form');
             this.$formElement.on('submit', function(event) { 
                 event.preventDefault();
                 
@@ -22,12 +21,6 @@
                 $(this).serializeArray().forEach(function(item) { 
                     data[item.name] = item.value;
                     console.log(item.name + ' is ' + item.value);
-                    // this is how we inject data into firestore.
-                    /*
-                    if (item.name == "username"){
-                        data[item.name] = auth.currentUser.email;
-                    }
-                    */
                 })
                 data['joined'] = '';
                 

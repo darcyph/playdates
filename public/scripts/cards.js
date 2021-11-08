@@ -32,16 +32,10 @@
                 }
                 else if (indentifier === "1") {
                     alert("delete")
-                    // removeRow does not work here
-                    // fn(username)
-                    //     .then(function () {
-                    //         this.removeRow(username);
-                    //     }.bind(this));
                 }
             }.bind(this));
         }
         addEntry(playdate) {
-            // this.removeRow(playdate.username);
             var entryElement = new Entry(playdate, this.selector, this.email);
             this.$element.append(entryElement.$element);
         }
